@@ -23,6 +23,16 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                height: 100,
+                color: Colors.amber,
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
