@@ -4,19 +4,21 @@ import 'package:movie_macaron/model/movie_response.dart';
 
 class NowPlayingListBloc {
   final MovieRepository _repository = MovieRepository();
-  final BehaviorSubject<MovieResponse> _subject = BehaviorSubject<MovieResponse>();
+  final BehaviorSubject<MovieResponse> _subjectMovie = BehaviorSubject<MovieResponse>();
 
-  //Observable
-  // TODO:
-  BehaviorSubject<MovieResponse> get subject => _subject;
+  // TODO: Observable (which extended from Stream) NOT used??? Use the Stream instead
+  Stream<MovieResponse> get movieObservable => _subjectMovie.stream;
+
+  // TODO: explicit to public class member
+  BehaviorSubject<MovieResponse> get subject => _subjectMovie;
 
   void getMovie() async {
     MovieResponse response = await _repository.getNowPlaying();
-    _subject.sink.add(response);
+    _subjectMovie.sink.add(response);
   }
 
   void dispose(){
-    _subject.close();
+    _subjectMovie.close();
   }
 }
 
