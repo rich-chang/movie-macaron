@@ -4,8 +4,9 @@ import 'package:movie_macaron/model/movie_response.dart';
 
 class MovieRepository {
   final String apiKey = FlutterConfig.get("TMDB_API_KEY");
-  static String baseUrl = 'https://api.themoviedb.org/3';
   final Dio _dio = Dio();
+
+  static String baseUrl = 'https://api.themoviedb.org/3';
   var getNowPlayingUrl = "$baseUrl/movie/now_playing";
 
   Future<MovieResponse> getNowPlaying() async {
