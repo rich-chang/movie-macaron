@@ -62,10 +62,21 @@ class _NowPlayingState extends State<NowPlaying> {
     if (movies.isEmpty) {
       return const Text("No movies");
     } else {
-      for (int i=0;i<movies.length;i++) {
-        print(movies[i].title);
-      }
-      return const Text("Now Playing movies");
+      return Container(
+        height: 360,
+        child: PageView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: movies.take(8).length,
+          itemBuilder: (BuildContext context, int index) {
+            return Container(
+              //width: MediaQuery.of(context).size.width,
+              height: 180,
+              //child: Image.network("https://image.tmdb.org/t/p/w780${movies[index].backPoster}"),
+              child: Image.network("https://image.tmdb.org/t/p/original${movies[index].poster}"),
+            );
+          },
+        ),
+      );
     }
   }
 
